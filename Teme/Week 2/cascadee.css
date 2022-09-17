@@ -1,0 +1,78 @@
+img{
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 20%;
+    margin-left: auto;
+    margin-top: 100px;
+    margin-right: auto;
+    display: block;
+}
+
+#topp{
+    text-decoration: none;
+    color: inherit;
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+a{
+    text-decoration: none;
+    margin: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.toppp{
+    margin: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    margin-right: 10px;
+
+}
+
+.line{
+    border-left: 3px solid black;
+    height: 600px;
+    margin: 10px;
+    margin-top: 80px;
+    margin-left: 30px;
+    
+}
+
+article{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#two{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.catalin{
+    font-weight: bold;
+}
+
+section > p {
+    margin: 5px 0;
+}
+
+.bib{
+    line-height: 25px;
+}
+
+body{
+    background-color: #FDFFF4;
+}

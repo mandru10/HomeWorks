@@ -1,0 +1,57 @@
+img{
+    width: 400px;
+    height: 500px;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#words{
+    font-size: 20px;
+}
+
+.rate{
+    display: flex;
+    gap: 30px;
+}
+
+#discribe{
+    color: gray;
+}
+
+.select{
+    display: flex;
+    flex-direction: row;
+    gap: 11px;
+}
+
+#firstbutton{
+    background-color: black;
+    color: white;
+    width: 65px;
+    height: 29px;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+#secondbutton{
+    background-color: white;
+    color: black;
+    width: 65px;
+    height: 29px;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    
+}

@@ -1,0 +1,105 @@
+body{
+    background-color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.firstchild{
+    width: 600px;
+    height: 400px;
+    background-color: #F9FAFB;
+    margin-top: 200px;
+    
+}
+
+.secondcontainer{
+    width: 330px;
+    height: 230px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    position: relative;
+    bottom: 366px;
+    left: 590px;
+    display: flex;
+    flex-direction: column;
+}
+
+.firstnr{
+ background-color: white;
+ height: 77px;
+ display: flex;
+ justify-content: space-between;
+}
+
+#firstelement{
+    margin-left: 25px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#secondelement{
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.secondnr{
+    background-color: white;
+    height: 77px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 5px;
+    
+}
+
+label{
+    font-size: 16px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif; 
+}
+
+.wrap{
+    height: 35px;
+    width: 280px;
+    margin-top: 0;
+    margin-left: 25px;
+}
+
+.thirdnr{
+    background-color: white;
+    height: 77px;
+    display: flex;
+    justify-content: end;
+}
+
+input{
+    display: flex;
+    width: 80px;
+    height: 40px;
+    margin-top:  20px;
+}
+
+#secondid{
+    background-color: white;
+    border: none;
+    color: #5852D5;
+    font-size: medium;
+    font-weight: bold;
+}
+
+#firstid{
+    background-color: #5852D5;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+}

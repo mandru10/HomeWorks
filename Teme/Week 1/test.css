@@ -1,0 +1,79 @@
+.a{
+    margin: 20px;
+    width: 820px;
+    height: 80px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+aside {
+    
+    width: 30px;
+    margin-top: 3px;
+    float: right;
+    font-style: italic;
+  }
+
+#da{
+
+    width: 300px;
+}
+
+.b{
+    margin: 20px;
+    width: 840px;
+    height: 80px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+#test{
+
+    font-family: Georgia, serif;
+
+}
+
+.c{
+    margin: 20px;
+    width: 830px;
+    height: 80px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+.d{
+    margin: 20px;
+    width: 850px;
+    height: 80px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+}
+
+.img {
+    border-radius: 60%;
+    margin-left: 50px;
+}
+
+#tab {
+
+    margin-right: 450px;
+    margin-bottom: 200px;
+
+  }
+
+#final{
+    font-family: Comic Sans MS;
+}
+
+#final {
+    border-style: dotted;
+    border-width: thick;
+  }
