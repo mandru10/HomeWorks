@@ -1,0 +1,90 @@
+body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container{
+    border-style: groove;
+    height: 400px;
+    width: 750px;
+}
+
+.toplist{
+    display: none;
+    position: relative;
+    width: 750px;
+    background-color: rgb(157, 227, 157);
+    border-radius: 3px;
+    margin-bottom: 5px;
+    color: rgb(11, 67, 11);
+    border: 2.4px solid rgb(157, 227, 157);
+
+}
+
+.message{
+    margin-left: 10px;
+}
+
+.lastmessage{
+    margin-right: 10px;
+}
+
+.dates{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 10px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.gen{
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+    margin-left: 30px;
+}
+
+.text{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.subm{
+    margin-top: 50px;
+    margin-left: 314px;
+}
+
+#but{
+    background-color: #428BCA;
+    color: white;
+    font-size: 15px;
+    width: 70px;
+    height: 35px;
+    border-radius: 3px;
+    border-width: 1px;
+}
+
+#but:hover{
+    cursor: pointer;
+}
+
+input:invalid{
+    border-color: red;
+    border-radius: 3px;
+}
+
+.xbutton{
+    position: absolute;
+    right: 5px;
+    border: none;
+    background: transparent;
+    line-height: 20px;
+}
+
+.edit{
+    padding-left: 10px;
+    padding-right: 25px;
+}
