@@ -8,6 +8,8 @@ var day5 = document.querySelector('.day5');
 var day6 = document.querySelector('.day6');
 var day7 = document.querySelector('.day7');
 
+//Creez o functie prin care se adauga un div in pagina.
+
 function createElementOne(text){
     var div = document.createElement("div");
     if(text === ''){
@@ -19,9 +21,13 @@ function createElementOne(text){
 
 }
 
+//Creez o functie prin care sterg div-ul respectiv
+
 function deleteCommentElement(event) {
     event.target.parentElement.parentElement.removeChild(event.target.parentElement);
 }
+
+//Creez o functie pentru fiecare buton, la care adaug un event de 'click'.
 
 button.forEach( add => {
 
