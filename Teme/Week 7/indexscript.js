@@ -26,20 +26,20 @@ function runWheaterApp(){
 
 }
 
-function runPostsApp() {
+function runPostsApp(){
     var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
     var postsContainerEl = document.querySelector('#postscontainer');
 
     function renderrPostsList(posts) {
         posts.forEach(function (post) {
-          var postDiv = createPost(post.title, post.body);
+          var postDiv = createPost(post.title, post.body, post.id);
           if (postDiv){
             postsContainerEl.appendChild(postDiv);
           }
         });
     }
 
-function createPost(title, body) {
+function createPost(title, body, id) {
         var div = document.createElement('div');
         div.innerHTML = 
         "<div class='post-title'>" +
@@ -47,8 +47,10 @@ function createPost(title, body) {
         title +
         "</h2>" +
         "</div><div class='post-body'>" + 
-        body + 
-        "/div"; 
+        body +
+        "</div><div class='post-body'>" + 
+        id +  
+        "</div>"; 
         
         return div;
     }
@@ -63,14 +65,73 @@ function createPost(title, body) {
 
 }
 
-function runEditApp() {
+function runEditApp(){
 
+var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
+var postsContainerEl = document.querySelector('#postscontainer');
+
+fetch(postsBaseUrl + '/posts/1', {
+method: 'PUT',
+headers:{
+    'Content-Type':'application/json'
+},
+body: JSON.stringify({
+id: 1,
+title: 'foo',
+body: 'bar',
+userId: 1
+})
+}).then(function(response){
+return response.json();
+}).then(function(jsonEdit) {
+renderrPostsList(jsonEdit); });
+
+function renderrPostsList(post) {
+          var postDiv = createPost(post.title, post.body, post.id);
+          if (postDiv){
+            postsContainerEl.appendChild(postDiv);
+          }
+        };
+
+function createPost(title, body, id) {
+        var div = document.createElement('div');
+        div.innerHTML = 
+        "<div class='post-title'>" +
+        "<h2>" + 
+        title +
+        "</h2>" +
+        "</div><div class='post-body'>" + 
+        body +
+        "</div><div class='post-body'>" + 
+        id +  
+        "</div>"; 
+        
+        return div;
+    }
+
+}
+
+function runDeleteApp(){
+
+var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
+
+fetch(
+postsBaseUrl + '/posts/1', {
+method: 'DELETE'
+}).then(function(response){
+return response.json();
+}).then(function(jsonDelete) {
+console.log(jsonDelete);
+});
 
 }
 
 var pageInit = function () {
  runWheaterApp();
  runPostsApp();
+ runEditApp();
+ runDeleteApp();   
+
 };
 
 window.addEventListener('load', function () {
