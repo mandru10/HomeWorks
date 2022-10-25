@@ -50,7 +50,8 @@ function createPost(title, body, id) {
         body +
         "</div><div class='post-body'>" + 
         id +  
-        "</div>"; 
+        "</div>" + "<button>Edit</button>" + " " + "<button>Delete</button></div>";
+        
         
         return div;
     }
@@ -84,7 +85,7 @@ userId: 1
 }).then(function(response){
 return response.json();
 }).then(function(jsonEdit) {
-renderrPostsList(jsonEdit); });
+renderrPostsList(jsonEdit); console.log(jsonEdit.id) });
 
 function renderrPostsList(post) {
           var postDiv = createPost(post.title, post.body, post.id);
