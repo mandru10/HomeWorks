@@ -29,110 +29,132 @@ function runWheaterApp(){
 function runPostsApp(){
     var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
     var postsContainerEl = document.querySelector('#postscontainer');
+    var span = document.getElementsByClassName("close")[0];
+    const modal = document.getElementById("myModal");
 
+    //Span-ul si window pentru inchiderea modalei la click-ul pe X sau in afara ei.
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+
+    //Creez o functie cu parametrii id, title si body la care aducem tagul tip textarea unde le asignam .value de title, respectiv body 
+    
+    function editModal(id, title, body){
+    
+        const buttonEdit = document.getElementById('buttonEdit');
+        const modalInputTitle = document.getElementById('modalInputTitle');
+        const modalInputBody = document.getElementById('modalInputBody');
+
+        modalInputTitle.value = title;
+        modalInputBody.value = body;
+
+        modal.style.display = 'block';
+
+        //Adaugarea pe butonul edit a unei functii de click care sa editeze continutul in functie de ce text se pune.
+
+        buttonEdit.onclick = () => {
+            const editTitle = modalInputTitle.value;
+            const editBody = modalInputBody.value;
+
+            fetch('postsBaseUrl' + '/posts/' + id, {
+                method: 'PUT',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    id,
+                    title: editTitle,
+                    body: editBody,
+                })
+            }).then(function(response){
+                return response.json();
+            }).then(function(jsonEdit) {
+
+    
+                modal.style.display = 'none';
+                getPosts(); //Apeleaza functia de post sa aduca postarile de pe site.
+            });
+        }
+    }
+
+    //Functie prin care se creeaza pentru fiecare div container, cate un div cu title body si id.
+    
     function renderrPostsList(posts) {
         posts.forEach(function (post) {
           var postDiv = createPost(post.title, post.body, post.id);
           if (postDiv){
             postsContainerEl.appendChild(postDiv);
+           
+            //Se aduc butoanele de Edit si Delete unde pe butonul de delete se adauga event de delete pentru postul unde te afli dupa care 
+            //vine response de tip json. 
+
+            const buttonEdit = document.getElementById('editPost-' + post.id); 
+            const buttonDelete = document.getElementById('deletePost-' + post.id);
+            buttonDelete.onclick = () =>{
+                fetch('postsBaseUrl' + '/posts/' + post.id, {
+                    method: 'DELETE',
+                })
+                    .then(function(response) {
+                        return response.json();
+                    })
+                    .then(function () {
+                        getPosts();
+                    });
+            }
+            buttonEdit.onclick = () => {
+                editModal(post.id, post.title, post.body);
+            }
           }
         });
     }
 
-function createPost(title, body, id) {
+
+    //Creez o functie care aduce prin fatch informatiile de la site(API). Cu raspunsul de la getPosts se creeaza template la div-ul de mai jos.
+
+    function createPost(title, body, id) {
         var div = document.createElement('div');
-        div.innerHTML = 
-        "<div class='post-title'>" +
-        "<h2>" + 
-        title +
-        "</h2>" +
-        "</div><div class='post-body'>" + 
-        body +
-        "</div><div class='post-body'>" + 
-        id +  
-        "</div>" + "<button>Edit</button>" + " " + "<button>Delete</button></div>";
-        
+
+        div.innerHTML = `
+        <div class='post-title'>
+                <h2>${title}</h2>
+            </div>
+            <div class='post-body'>
+                ${body}
+            </div>
+            <div class='post-body'>${id}</div>
+            <button id='editPost-${id}'>Edit</button>
+            <button id='deletePost-${id}'>Delete</button></div>`;
         
         return div;
     }
 
-    fetch(postsBaseUrl + '/posts')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function (posts) {
-        renderrPostsList(posts);
-    });
+    //Functia prin care primesc raspunsul sub forma de JSON de la site(API).
+    
+function getPosts (){
 
-}
-
-function runEditApp(){
-
-var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
-var postsContainerEl = document.querySelector('#postscontainer');
-
-fetch(postsBaseUrl + '/posts/1', {
-method: 'PUT',
-headers:{
-    'Content-Type':'application/json'
-},
-body: JSON.stringify({
-id: 1,
-title: 'foo',
-body: 'bar',
-userId: 1
-})
-}).then(function(response){
-return response.json();
-}).then(function(jsonEdit) {
-renderrPostsList(jsonEdit); console.log(jsonEdit.id) });
-
-function renderrPostsList(post) {
-          var postDiv = createPost(post.title, post.body, post.id);
-          if (postDiv){
-            postsContainerEl.appendChild(postDiv);
-          }
-        };
-
-function createPost(title, body, id) {
-        var div = document.createElement('div');
-        div.innerHTML = 
-        "<div class='post-title'>" +
-        "<h2>" + 
-        title +
-        "</h2>" +
-        "</div><div class='post-body'>" + 
-        body +
-        "</div><div class='post-body'>" + 
-        id +  
-        "</div>"; 
-        
-        return div;
+        fetch(postsBaseUrl + '/posts')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function (posts) {
+            renderrPostsList(posts);
+        });
     }
+    getPosts();
 
 }
 
-function runDeleteApp(){
-
-var postsBaseUrl = 'https://jsonplaceholder.typicode.com';
-
-fetch(
-postsBaseUrl + '/posts/1', {
-method: 'DELETE'
-}).then(function(response){
-return response.json();
-}).then(function(jsonDelete) {
-console.log(jsonDelete);
-});
-
-}
 
 var pageInit = function () {
  runWheaterApp();
- runPostsApp();
- runEditApp();
- runDeleteApp();   
-
+ runPostsApp();  
 };
 
 window.addEventListener('load', function () {
